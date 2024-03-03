@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+    <script>
+        function previewImage() {
+          const preview = document.getElementById('imagePreview');
+          const fileInput = document.getElementById('uploadInput');
+          const files = fileInput.files;
+    
+          if (files.length > 0) {
+            const file = files[0];
+            const reader = new FileReader();
+    
+            reader.onload = function(e) {
+              const img = new Image();
+              img.src = e.target.result;
+              img.style.width = '100%';
+              img.style.height = '100%';
+              preview.appendChild(img);
+            }
+    
+            reader.readAsDataURL(file);
+          } else {
+            preview.innerHTML = 'No image selected';
+          }
+        }
+      </script>
+    <div class="main">
+        <h1>Image Gallery</h1>
+        <p>
+        <i> Welcome to the image gallery.</i>
+        <br>
+        These are some randome pictures that are taken from upslash website, Please reload the page to change the images</p>
+       
+            </div>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://source.unsplash.com/random/500x600/?tech" alt="Image 1">
+    </div>
+    <div class="gallery-item">
+      <img src="https://source.unsplash.com/random/500x600/?vintge" alt="Image 2">
+    </div>
+    <div class="gallery-item">
+      <img src="https://source.unsplash.com/random/500x600/?city" alt="Image 3">
+          </div>
+
+    <div class="gallery-item">
+        <img src="https://source.unsplash.com/random/500x600" alt="Image 4">
+    </div> 
+ </div>
+
+    <div class="upload">
+        <button class="upload-button" onclick="document.getElementById('uploadInput').click()">Upload Image</button>
+        <input type="file" id="uploadInput" onchange="previewImage()">
+        <div id="imagePreview"></div>
+             </div>
+   </body>
+</html>
